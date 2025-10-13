@@ -68,11 +68,9 @@ const Counting = ({ data, restart }) => {
                         <Tooltip placement="top-start" title={`C = ${Cvalue2 / Math.pow(10, 6)} * 10^6`}>
                             <Typography color="primary">C = {Cvalue2Rounded} Мбит/с</Typography>
                         </Tooltip>
-                        <Typography color="primary">C/{deltaSimbol}F = {Cvalue1Rounded} (бит/с / Гц)(Спектральная эффективность)</Typography>
                     </Box>
                     <Divider />
                     <Typography variant="body2" color="secondary">Не знаю что писать в выводе т.к. спектральная эффективность всегда одинаковая получаеться. Этот пункт на записи вообще не очень понятно объяснен. Лучше пересмотреть запись</Typography>
-                    <Typography variant="body2" color="secondary">Я написал C/F=C/F2={Cvalue1Rounded} (бит/с / Гц) для F - 1 и F2 = {data.variant} МГц</Typography>
                 </Paper>
                 {/* TASK 3 */}
                 <Paper sx={{ padding: 2 }}>
@@ -103,7 +101,6 @@ const Counting = ({ data, restart }) => {
                         </Box>
                     </Box>
                     <Typography>{deltaSimbol}<Span>p</Span>{String.fromCharCode(8805)} = {deltaPRounded}</Typography>
-                    <Typography>{deltaSimbol}<Span>p</Span>{String.fromCharCode(8805)} = {deltaPRounded2} * 10 <Span top>-1</Span></Typography>
                     <Divider/>
                     {deltaPResult ?
                     <Typography color="primary">

@@ -1,10 +1,10 @@
-import Counter from "./counter_febraury/Counter";
+import CounterMultimedia from "./counter_multimedia/CounterMultimedia";
 
 
 function App() {
   return (
     <>
-    <Counter/>
+      <CounterMultimedia />
     </>
   );
 }
