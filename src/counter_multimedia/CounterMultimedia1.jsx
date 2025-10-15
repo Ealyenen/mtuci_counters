@@ -51,7 +51,7 @@ const variants = [
 // ======================
 // Основной компонент
 // ======================
-const CounterMultimedia = () => {
+const CounterMultimedia1 = () => {
   const [variant, setVariant] = useState(1);
   const [data, setData] = useState(variants[0]);
   const [result, setResult] = useState(null);
@@ -250,4 +250,4 @@ const CounterMultimedia = () => {
   );
 };
 
-export default CounterMultimedia;
+export default CounterMultimedia1;

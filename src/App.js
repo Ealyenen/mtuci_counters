@@ -1,10 +1,10 @@
-import CounterMultimedia from "./counter_multimedia/CounterMultimedia";
+import Counters from "./Counters";
 
 
 function App() {
   return (
     <>
-      <CounterMultimedia />
+      <Counters/>
     </>
   );
 }
