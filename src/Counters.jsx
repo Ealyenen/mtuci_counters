@@ -2,6 +2,7 @@ import React from 'react'
 import CounterMultimedia1 from './counter_multimedia/CounterMultimedia1'
 import CounterCloud1 from './counter_cloud/CounterCloud1'
 import { Typography } from '@mui/material'
+import CounterAudio2 from './sound_multimedia/CounterSound'
 
 const counters = {
     "cloud1": {
@@ -11,6 +12,10 @@ const counters = {
     "multimedia1": {
         name: "МИС_1",
         component: <CounterMultimedia1 />
+    },
+    "multimedia2": {
+        name: "МИС_2",
+        component: <CounterAudio2 />
     },
 }
 
