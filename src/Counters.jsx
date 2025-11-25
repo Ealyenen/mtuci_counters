@@ -4,6 +4,7 @@ import CounterCloud1 from './counter_cloud/CounterCloud1'
 import { Typography } from '@mui/material'
 import CounterAudio2 from './sound_multimedia/CounterSound'
 import ImgStore from './img_store_multimedia/ImgStore'
+import CounterColors4 from './counter_color_multimedia/CounterColor'
 
 const counters = {
     "cloud1": {
@@ -21,6 +22,10 @@ const counters = {
     "multimedia3": {
         name: "МИС_3",
         component: <ImgStore />
+    },
+    "multimedia4": {
+        name: "МИС_4",
+        component: <CounterColors4 />
     },
 }
 
