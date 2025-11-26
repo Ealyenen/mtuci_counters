@@ -34,7 +34,7 @@ const counters = {
     },
     "cloud2": {
         name: "ТИСОС_2",
-        component: <CounterCloud2 />
+        component: <Typography>Раздел в разработке</Typography>//<CounterCloud2 />
     },
     "cloud3": {
         name: "ТИСОС_3",
