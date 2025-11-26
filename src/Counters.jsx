@@ -8,8 +8,7 @@ import CounterColors4 from './counter_color_multimedia/CounterColor'
 import CounterCloud2 from './counter_cloud_2/CounterCloud2'
 import CounterTopology3 from "./counter_cloud_3/CounterCloud3"
 import ShannonFanoTool from './counter_multimedia_shannon/ShannonCounter'
-
-const string = "ПРОСТРАНСТВОМ ГДЕ ТОЧКА СОБЫТИЕ ОПРЕДЕЛЯЕТСЯ ЧЕТЫРЬМЯ КООРДИНАТАМИ ПРОСТРАНСТВО СВЯЗАНО СО ВРЕМЕНЕМ ЧЕРЕЗ СОБЫТИЕ А ИСХОДЯ ИЗ ТОГО ЧТО ПРОСТРАНСТВО И ВРЕМЯ ВСЕОБЩИЕ ФОРМЫ СУЩЕСТВОВАНИЯ МАТЕРИИ И ПРОСТРАНСТВО И ВРЕМЯ НЕ СУЩЕСТВУЮТ ВНЕ МАТЕРИИ И НЕЗАВИСИМО ОТ НЕЁ ТО СОБЫТИЕ СУЩЕСТВУЕТ ВСЕГДА ТАМ ГДЕ ЕСТЬ ПРОСТРАНСТВО И ВРЕМЯ СОБЫТИЕ ПОЗНАЕТСЯ ЧЕЛОВЕКОМ ЧЕРЕЗ ИНФОРМАЦИЮ СОВОКУПНОСТЬ ИНФОРМАЦИИ ФОРМИРУЕТ СОБЫТИЕ ТО ЕСТЬ"
+import DownloadShannon from './counter_multimedia_shannon/DownloadShannon'
 
 const counters = {
     "cloud1": {
@@ -42,7 +41,7 @@ const counters = {
     },
     "multimedia5": {
         name: "МИС_5",
-        component: <ShannonFanoTool />
+        component: <DownloadShannon/> //<Typography>Раздел в разработке</Typography>//<ShannonFanoTool />
     },
 
 }

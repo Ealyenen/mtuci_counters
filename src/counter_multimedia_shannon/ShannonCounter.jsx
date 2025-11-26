@@ -19,38 +19,62 @@ function countLetters(str) {
 }
 
 // Shannon–Fano: рекурсивное построение кодов
-function buildShannonFano(nodes, code = "", depth = 0, treeLevels = []) {
-    if (!treeLevels[depth]) treeLevels[depth] = [];
+// function buildShannonFano(nodes, code = "", depth = 0, treeLevels = []) {
+//     if (!treeLevels[depth]) treeLevels[depth] = [];
 
-    // Лист — назначаем код
-    if (nodes.length === 1) {
-        nodes[0].code = code;
-        treeLevels[depth].push(nodes.map(n => n.char).join(""));
-        return;
-    }
+//     // Лист — назначаем код
+//     if (nodes.length === 1) {
+//         nodes[0].code = code;
+//         treeLevels[depth].push(nodes.map(n => n.char).join(""));
+//         return;
+//     }
 
-    // Ищем точку разбиения
-    let total = nodes.reduce((s, n) => s + n.prob, 0);
-    let half = total / 2;
+//     // Ищем точку разбиения
+//     let total = nodes.reduce((s, n) => s + n.prob, 0);
+//     let half = total / 2;
 
-    let acc = 0;
-    let splitIndex = 0;
-    for (let i = 0; i < nodes.length; i++) {
-        acc += nodes[i].prob;
-        if (acc >= half) {
-            splitIndex = i;
-            break;
+//     let acc = 0;
+//     let splitIndex = 0;
+//     for (let i = 0; i < nodes.length; i++) {
+//         acc += nodes[i].prob;
+//         if (acc >= half) {
+//             splitIndex = i;
+//             break;
+//         }
+//     }
+
+//     const left = nodes.slice(0, splitIndex + 1);
+//     const right = nodes.slice(splitIndex + 1);
+
+//     treeLevels[depth].push(nodes.map(n => n.char).join(""));
+
+//     buildShannonFano(left, code + "0", depth + 1, treeLevels);
+//     buildShannonFano(right, code + "1", depth + 1, treeLevels);
+// }
+
+// ---------------------- SHANNON CODES --------------------------
+function buildShannonCodes(rows) {
+    let cumProb = 0;
+
+    for (const r of rows) {
+        r.len = Math.ceil(-Math.log2(r.prob)); // длина кода
+        // вычисляем бинарный код кумулятивной вероятности
+        let code = "";
+        let value = cumProb;
+        for (let i = 0; i < r.len; i++) {
+            value *= 2;
+            if (value >= 1) {
+                code += "1";
+                value -= 1;
+            } else {
+                code += "0";
+            }
         }
+        r.code = code;
+        cumProb += r.prob; // обновляем кумулятивную вероятность
     }
-
-    const left = nodes.slice(0, splitIndex + 1);
-    const right = nodes.slice(splitIndex + 1);
-
-    treeLevels[depth].push(nodes.map(n => n.char).join(""));
-
-    buildShannonFano(left, code + "0", depth + 1, treeLevels);
-    buildShannonFano(right, code + "1", depth + 1, treeLevels);
 }
+
 
 // ---------------------- COMPONENT --------------------------
 
@@ -70,16 +94,26 @@ export default function ShannonFanoTable() {
 
     // Подготовка уровней дерева
     const treeLevels = [];
-    if (freq) {
-         buildShannonFano(rows, "", 0, treeLevels);
-    }
+    // if (freq) {
+    //      buildShannonFano(rows, "", 0, treeLevels);
+    // }
 
+    if (freq) {
+        rows = rows.map(r => ({ ...r })); // чтобы не мутировать оригинал
+        buildShannonCodes(rows);
+    }
     // Длина кода
+    // rows = freq && rows?.map(r => ({
+    //     ...r,
+    //     len: r?.code?.length,
+    //     info: -r.prob * Math.log2(r.prob),
+    //     cost: r.prob * r?.code?.length,
+    // }));
+
     rows = freq && rows?.map(r => ({
         ...r,
-        len: r?.code?.length,
         info: -r.prob * Math.log2(r.prob),
-        cost: r.prob * r?.code?.length,
+        cost: r.prob * r.code.length,
     }));
 
     const entropy = freq && rows?.reduce((s, r) => s + r.info, 0);
