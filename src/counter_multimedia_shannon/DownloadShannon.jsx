@@ -49,7 +49,7 @@ function buildCodes(simbols) {
     // console.log("group", group)
     for (let i in group) {
       amount = amount + group[i][1]
-      if (amount >= half) {
+      if (amount >= half && leftGroup.length>0) {
         group[i][2].push(1)
         rightGroup.push(group[i])
       } else {
@@ -265,6 +265,7 @@ const DownloadShannon = () => {
                 })}
               </TableBody>
             </Table>
+            <Typography>Всего: {str.length}</Typography>
           </>
         }
 
